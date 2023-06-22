@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- style flamework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <!-- code editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/mode-python.min.js" integrity="sha512-W1k0SdTb7FU3nxWYkBLQVhTC8b8BU6Je3deBSnLm/dSQ956goMMnL+NYi2SXse1i7k0eUJNMNycTvbEdrJmEFw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/theme-xcode.min.js" integrity="sha512-bo2Y39IrrkTHpXjRo1kVhkpcW8/eusqqAF/KA3GxwxImB3qF9o7larxdStIVhvOcR2XvqBjmaJ2Fas/G/DVMTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- python wasm -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+    <script src="./js/target_sketch.js" type="module"></script>
+    <title>py5</title>
+</head>
+<body
+    class="w-screen h-screen bg-gradient-to-r from-sky-500 to-pink-500 flex justify-center items-center p-12"
+>
+    <div
+        class="fixed top-4 left-4 text-4xl drop-shadow-lg text-white"
+        style="font-family: 'Moirai One', cursive;"
+    >
+        PyDraw
+    </div>
+    <div
+        class="w-full max-w-[1200px] backdrop-blur-md bg-white/70 shadow-lg rounded-lg m-auto p-4"
+    >
+        <div
+            class="flex items-center h-[70px]"
+        >
+            <button
+                id="excute-btn"
+                class="rounded-lg p-2 bg-teal-500 min-w-[50px] h-[50px] shadow hover:shadow-lg text-white text-2xl mr-4 font-bold"
+            >
+                RUN
+            </button>
+            <button 
+                id="clear-btn"
+                class="rounded-lg p-2 bg-teal-500 min-w-[50px] h-[50px] shadow hover:shadow-lg text-white text-2xl mr-4 font-bold"
+            >
+                CLEAR
+            </button>
+            <button 
+                id="share-btn"
+                class="rounded-lg p-2 bg-teal-500 min-w-[50px] h-[50px] shadow hover:shadow-lg text-white text-2xl mr-4 font-bold"
+            >
+                SHARE
+            </button>
+        </div>
+        <div
+            class="grid grid-cols-2 gap2 w-full min-h-[600px]"
+        >
+            <div 
+                id="editor" 
+                class="h-full border"
+            ></div>
+            <div 
+                class="w-full h-full grid grid-rows-6 gap-2"
+            >
+            <div
+            class="row-span-5 flex justify-center items-center"
+            >
+                <div 
+                    id="sketch-holder"
+                ></div>
+            </div>
+            <div
+                class="row-span-1 px-2"
+            >
+                <div 
+                    id="console-holder"
+                    class="bg-black w-full h-full max-h-[90px] rounded text-white p-2 overflow-y-scroll"
+                ></div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="fixed bottom-0 left-0 w-full bg-white/30 text-center text-white"
+    >
+        ©︎2023 松村 based on <a href="https://berinhard.github.io/pyp5js/pyodide/">pyp5js demo editor</a>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
