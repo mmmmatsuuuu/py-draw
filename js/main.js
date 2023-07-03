@@ -60,7 +60,7 @@ ${ e }`;
   shareBtn.addEventListener("click", () => {
     console.log("do it")
     if (window.instance) {
-      const baseUrl = this.location.href;
+      const baseUrl = this.location.host;
       const code = editor.getValue();
       const encodedCode = btoa(unescape(encodeURIComponent(code)));
       let url = `${ baseUrl }?code=${ encodedCode }`;
