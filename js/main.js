@@ -63,7 +63,7 @@ ${ e }`;
       const baseUrl = this.location.host;
       const code = editor.getValue();
       const encodedCode = btoa(unescape(encodeURIComponent(code)));
-      let url = `${ baseUrl }?code=${ encodedCode }`;
+      let url = `${ baseUrl }/py-draw?code=${ encodedCode }`;
       if (navigator.clipboard) {
         return navigator.clipboard.writeText(url).then(function() {
           alert("URLをクリップボードにコピーしました");
