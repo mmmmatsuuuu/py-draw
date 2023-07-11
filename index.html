@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/theme-xcode.min.js" integrity="sha512-bo2Y39IrrkTHpXjRo1kVhkpcW8/eusqqAF/KA3GxwxImB3qF9o7larxdStIVhvOcR2XvqBjmaJ2Fas/G/DVMTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- python wasm -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
     <script src="./js/target_sketch.js" type="module"></script>
     <title>pyDraw</title>
 </head>
@@ -52,6 +52,26 @@
             >
                 SHARE
             </button>
+            <div class="grow"></div>
+            <div class="flex items-center">
+                <span class="m-1 font-bold">CANVAS</span>
+                <label
+                    onclick="toggleDisplayOutputSpace()"
+                >
+                    <input 
+                        id="toggler"
+                        type="checkbox"
+                        class="peer sr-only"
+                    >
+                    <span
+                        class="block w-[4em] cursor-pointer bg-teal-100 rounded-full 
+                        p-[1px] after:block after:h-[2em] after:w-[2em] after:rounded-full 
+                        after:bg-teal-500 after:transition peer-checked:bg-teal-100 
+                        peer-checked:after:translate-x-[calc(100%-2px)]"
+                    ></span>
+                </label>
+                <span class="m-1 font-bold">CONSOLE</span>
+            </div>
         </div>
         <div
             class="grid grid-cols-2 gap2 w-full min-h-[600px]"
@@ -61,23 +81,31 @@
                 class="h-full border"
             ></div>
             <div 
-                class="w-full h-full grid grid-rows-6 gap-2"
+                class="w-full h-full px-2"
             >
-            <div
-            class="row-span-5 flex justify-center items-center"
-            >
-                <div 
-                    id="sketch-holder"
-                ></div>
-            </div>
-            <div
-                class="row-span-1 px-2"
-            >
-                <div 
-                    id="console-holder"
-                    class="bg-black w-full h-full max-h-[90px] rounded text-white p-2 overflow-y-scroll"
-                ></div>
-            </div>
+                <div
+                    id="sketch-container"
+                    class=""
+                >
+                    <h2 class="text-lg font-bold"><span class="text-2xl">C</span>ANVAS</h2>
+                    <div 
+                        id="sketch-holder"
+                    ></div>
+                </div>
+                <div
+                    id="console-container"
+                    class="hidden"
+                >
+                    <h2 class="text-lg font-bold"><span class="text-2xl">C</span>ONSOLE</h2>
+                    <div 
+                        id="console-holder"
+                        class="bg-black w-full h-[450px] rounded text-white p-2 overflow-y-scroll"
+                    ></div>
+                    <button
+                        onclick="clearConsole()"
+                        class="rounded-lg p-2 bg-teal-500 w-full h-[50px] shadow hover:shadow-lg text-white text-2xl mt-4 font-bold"
+                    >CONSOLE CLEAR</button>
+                </div>
             </div>
         </div>
     </div>

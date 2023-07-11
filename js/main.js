@@ -38,11 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.instance) {
       try {
         runCode();
-        document.getElementById("console-holder").innerText = "";
+        document.getElementById("console-holder").innerText = window.STD_OUT.join(`\n`);
       } catch(err) {
         var e = err.toString().split('"<exec>",')[1];
-        document.getElementById("console-holder").innerText = `<エラーメッセージ>
-${ e }`;
+        window.STD_ERR.push(`<エラーメッセージ>
+${ e }`);
+        document.getElementById("console-holder").innerText = window.STD_ERR;
       }
       } else {
         window.alert(
@@ -72,3 +73,20 @@ ${ e }`;
     }
   });
 });
+
+function toggleDisplayOutputSpace() {
+  const toggler = document.getElementById("toggler");
+  const sketchContainer = document.getElementById("sketch-container");
+  const consoleContainer = document.getElementById("console-container");
+  if (toggler.checked) {
+    sketchContainer.classList.add("hidden");
+    consoleContainer.classList.remove("hidden");
+  } else {
+    sketchContainer.classList.remove("hidden");
+    consoleContainer.classList.add("hidden");
+  }
+}
+
+function clearConsole() {
+  document.getElementById("console-holder").innerHTML = "";
+}

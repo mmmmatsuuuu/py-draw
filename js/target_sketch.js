@@ -1671,11 +1671,16 @@ function runCode() {
     window.pyodide.runPython(code);
 }
 
+window.STD_OUT = [];
+window.STD_ERR = [];
 
 async function main() {
     const config = {
-        indexURL : "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
+        indexURL : "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
         fullStdLib: false,
+        // stdin: stdin_func = () => {return stdin},
+        stdout: s => {STD_OUT.push(s)},
+        stderr: s => {STD_ERR.push(`<エラーメッセージ>${s.toString().split('"<exec>",')[1]}`)}
     }
     window.pyodide = await loadPyodide(config);
     // Pyodide is now ready to use...
