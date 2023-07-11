@@ -89,4 +89,6 @@ function toggleDisplayOutputSpace() {
 
 function clearConsole() {
   document.getElementById("console-holder").innerHTML = "";
+  window.STD_OUT = [];
+  window.STD_ERR = [];
 }
